@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:state_activated="true"
+    android:orientation="vertical" >
+<!-- style="@style/activated" -->
+    
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <ImageView
+            android:id="@+id/eventIconView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+     		android:contentDescription="@string/event_icon_desc"
+            android:src="@drawable/ic_event_default" />
+
+        <TextView
+            android:id="@+id/eventNameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/eventIconView"
+            android:textSize="20sp"
+            android:text="@string/eventName"
+            android:state_selected="true"
+            android:listSelector="@drawable/event_list_selector" />
+
+        <TextView
+            android:id="@+id/subscribeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/eventNameView"
+            android:layout_alignBottom="@+id/eventNameView"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:textColor="@color/FireBrick"
+            android:textSize="24sp"
+            android:text="@string/subscribe" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/eventBriefView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/LightGrey"
+        android:textSize="16sp"
+        android:text="@string/eventBrief" />
+
+</LinearLayout>

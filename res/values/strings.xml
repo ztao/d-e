@@ -1,0 +1,38 @@
+<resources>
+
+    <string name="app_name">Diabetes ElseWhere</string>
+
+    <string-array name="features_array">
+        <item>Your Health Information</item>
+        <item>New Event</item>
+        <item>My Schedule</item>
+        <item>General Tips</item>
+        <item>Before You Go</item>
+        <item>Diet Recommendation</item>
+        <item>Aid Information</item>
+        <item>Flight Calculator</item>
+        <item>Feedback</item>
+        <item>Log out</item>
+    </string-array>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="looking_for_events">available events…</string>
+    <string name="event_icon_desc">A image about the specified event</string>
+    <string name="eventName">Event Name</string>
+    <string name="eventBrief">A brief introduction of the event above</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="action_previous">Previous</string>
+    <string name="action_next">Next</string>
+    <string name="action_finish">Finsih</string>
+    <string name="activityName"> Current Activity </string>
+    <string name="noTips">No tips yet.</string>
+    <string name="shareTips">Share your tips!</string>
+    <string name="startdateDefault">Start Date: not specified yet</string>
+    <string name="durationDefault">Duration: unknown</string>
+    <string name="placeDefault">Place: unknown</string>
+    <string name="weatherDefault">Weather: maybe good</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+
+</resources>
