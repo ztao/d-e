@@ -5,6 +5,7 @@ import com.appspot.diabeteselsewhere.adapter.ActivitiesPagerAdapter;
 import com.appspot.diabeteselsewhere.helper.DEJsonParser;
 import com.appspot.diabeteselsewhere.helper.DepthPageTransformer;
 import com.appspot.diabeteselsewhere.model.EventModel;
+import com.appspot.diabeteselsewhere.sub_fragment.CurrentActivityFragment;
 
 import android.app.ActionBar;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.view.MenuItem;
 
 
 public class ActivitiesPagerActivity extends FragmentActivity
+	implements CurrentActivityFragment.OnTipsUpdatedListener
 {	
 	private static final String SETTINGS = "my_setting";
 	private static final String SUBSCRIBED_EVENT_NUMBER = "the number of subscribed event";
@@ -112,6 +114,12 @@ public class ActivitiesPagerActivity extends FragmentActivity
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void updateCurrentItem(String newTips, int activityId) {
+		mEvent.activityList.get(activityId).tips = newTips;
+		mPager.setCurrentItem(activityId);
 	}
 	
 //	@Override

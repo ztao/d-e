@@ -3,6 +3,7 @@ package com.appspot.diabeteselsewhere.asynctask;
 import java.util.ArrayList;
 
 import com.appspot.diabeteselsewhere.R;
+import com.appspot.diabeteselsewhere.helper.DEHttpConnection;
 import com.appspot.diabeteselsewhere.helper.DEJsonParser;
 import com.appspot.diabeteselsewhere.helper.DEServerHelper;
 import com.appspot.diabeteselsewhere.main_fragment.EventSubscriptionFragment;
@@ -39,7 +40,9 @@ public class EventListWebAPITask extends AsyncTask<String, Integer, Boolean> {
 	protected Boolean doInBackground(String... params) {
 		try {
 			Log.d(dtag ,"Background:" + Thread.currentThread().getName());
-			String result = DEServerHelper.downloadFromServer(params);
+			Log.d(dtag,"params: " + params[0]);
+			String result = DEHttpConnection.downloadFromServer(params);
+//			String result = DEServerHelper.downloadFromServer(params);
 			Log.d(dtag, "Response body:" + result);
 			eventsData = DEJsonParser.eventListParser(result);
 			return true;

@@ -10,6 +10,7 @@ import com.appspot.diabeteselsewhere.helper.DEServerHelper;
 import com.appspot.diabeteselsewhere.model.EventModel;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 public class ShareTipsWebAPITask extends AsyncTask<String, Integer, Boolean>{
@@ -22,17 +23,28 @@ public class ShareTipsWebAPITask extends AsyncTask<String, Integer, Boolean>{
 	
 	private ShareTipsActivity activity;
 	private EventModel eventModel;
+	private EventModel.ActivityModel activityModel;
+	private static final String dtag = "ShareTipsWebAPITask";
 
-	public ShareTipsWebAPITask(ShareTipsActivity a, EventModel e) {
+	public ShareTipsWebAPITask(ShareTipsActivity a, EventModel em) {
 		activity = a;
-		eventModel = e;
+		eventModel = em;
 	}
+	
+	public ShareTipsWebAPITask(ShareTipsActivity a, EventModel.ActivityModel am) {
+		activity = a;
+		activityModel = am;
+	}
+	
 	@Override
 	protected Boolean doInBackground(String... params) {
-		JSONObject eventObject = DEJsonWriter.event2Json(eventModel);
+		JSONObject object = new JSONObject();
+		Log.d(dtag, "Tips:" + activityModel.tips);
+		object = DEJsonWriter.tips2json(activityModel);
+		Log.d(dtag , "Json Object:" + object.toString());
 		Boolean status = false;
 		try {
-			new DEServerHelper(eventObject);
+			new DEServerHelper(object);
 			status = DEServerHelper.uploadToServer(eventUrl+params[0]);
 			return status;
 		} catch (IOException e) {

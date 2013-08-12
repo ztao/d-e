@@ -1,8 +1,10 @@
 package com.appspot.diabeteselsewhere.activity;
 
 import com.appspot.diabeteselsewhere.R;
+import com.appspot.diabeteselsewhere.main_fragment.BeforeYouGoFragment;
 import com.appspot.diabeteselsewhere.main_fragment.EventDetailFragment;
 import com.appspot.diabeteselsewhere.main_fragment.EventSubscriptionFragment;
+import com.appspot.diabeteselsewhere.main_fragment.GeneralTipsFragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -24,23 +26,23 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class NavigationActivity extends Activity {
-	
+
 	private static final String SETTINGS = "my_setting";
 	private static final String SUBSCRIBED_EVENT_NUMBER = "the number of subscribed event";
-	
+
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 	private String [] mFeatureTitles;
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
-	
-	
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_navigation);
-		
+
 		mTitle = mDrawerTitle = getTitle();
 		mFeatureTitles  = getResources().getStringArray(R.array.features_array);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -76,7 +78,7 @@ public class NavigationActivity extends Activity {
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		selectItem(1);
 	}
-	
+
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// The action bar home/up action should open or close the drawer.
 		// ActionBarDrawerToggle will take care of this.
@@ -85,22 +87,24 @@ public class NavigationActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	
+
+
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			selectItem(position);
 		}
 	}
-	
+
 	private void selectItem(int position) {
 		Fragment eventSubscription = new EventSubscriptionFragment();
 		Fragment eventDetail = new EventDetailFragment();
-		
+		Fragment generalTips = new GeneralTipsFragment();
+		Fragment beforeYouGo = new BeforeYouGoFragment();
+
 		FragmentManager fragmentManager = getFragmentManager();
 		FragmentTransaction ft = fragmentManager.beginTransaction();
-		
+
 		Toast.makeText(getApplicationContext(), getResources().getStringArray(R.array.features_array)[position], Toast.LENGTH_LONG).show();
 		switch(position) {
 		case 1:
@@ -108,6 +112,12 @@ public class NavigationActivity extends Activity {
 			break;        
 		case 2:
 			ft.replace(R.id.content_frame, eventDetail).commit();
+			break;
+		case 3:
+			ft.replace(R.id.content_frame, generalTips).commit();
+			break;
+		case 4:
+			ft.replace(R.id.content_frame, beforeYouGo).commit();
 			break;
 		}
 

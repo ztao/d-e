@@ -44,7 +44,7 @@ public class EventSubscriptionFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		l.setSelection(position);
-		Toast.makeText(getActivity(), events.get(position).name+" was booked, check it on the schedule", Toast.LENGTH_LONG).show();
+		Toast.makeText(getActivity(), events.get(position).name+" at position "+position+" was booked, check it on the schedule", Toast.LENGTH_LONG).show();
 		Log.d(dtag,"Event "+ events.get(position).name + "at positin "+position+" was selected");
 		subscribeEventAt(position);
 	}

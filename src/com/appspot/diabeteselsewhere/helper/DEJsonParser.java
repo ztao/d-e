@@ -31,6 +31,7 @@ public class DEJsonParser {
 		EventModel eventModel = new EventModel();
 		eventModel.activityList = new ArrayList<EventModel.ActivityModel>();		try {
 			JSONObject event = new JSONObject(result);
+			eventModel.eid = event.getInt("ID");
 			eventModel.name = event.getString("Name");
 			eventModel.brief = event.getString("Brief");
 			eventModel.startDate = event.getString("Start Date");
@@ -45,6 +46,7 @@ public class DEJsonParser {
 				JSONObject a = activities.getJSONObject(i);
 				JSONObject p = a.getJSONObject("Place");
 				JSONObject r = a.getJSONObject("Relation");
+				am.aid = a.getInt("ID");
 				am.name = a.getString("Name");
 				am.startDate = a.getString("Start Date");
 				am.duration = a.getString("Duration");

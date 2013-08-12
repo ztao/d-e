@@ -13,7 +13,7 @@ public class DEHttpConnection {
 	public static String downloadFromServer(String... params) {
 		String eventJson = null;
 		try {
-			URL url = new URL("http://diabeteselsewhere.appspot.com"+params);
+			URL url = new URL("http://diabeteselsewhere.appspot.com"+params[0]);
 			HttpURLConnection con = (HttpURLConnection) url
 					.openConnection();
 			eventJson = readStream(con.getInputStream());
