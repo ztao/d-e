@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/eachActivityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"        
+        android:text="Each Activity Name"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="26dp"
+        android:layout_marginTop="24dp"
+        android:text="Detail"
+        android:textColor="@color/Green" />
+
+</RelativeLayout>

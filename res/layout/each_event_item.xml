@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="true"
-    android:state_activated="true"
-    android:orientation="vertical" >
-<!-- style="@style/activated" -->
-    
+    android:background="@color/LightYellow"
+    android:orientation="vertical"
+    android:paddingBottom="40dp"
+    android:state_activated="true" >
+
+    <!-- style="@style/activated" -->
+
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
+
         <ImageView
             android:id="@+id/eventIconView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-     		android:contentDescription="@string/event_icon_desc"
+            android:contentDescription="@string/event_icon_desc"
             android:src="@drawable/ic_event_default" />
 
         <TextView
@@ -28,10 +31,11 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/eventIconView"
-            android:textSize="20sp"
-            android:text="@string/eventName"
+            android:listSelector="@drawable/event_list_selector"
             android:state_selected="true"
-            android:listSelector="@drawable/event_list_selector" />
+            android:text="@string/eventName"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/subscribeText"
@@ -39,21 +43,25 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/eventNameView"
             android:layout_alignBottom="@+id/eventNameView"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:textColor="@color/FireBrick"
-            android:textSize="24sp"
-            android:text="@string/subscribe" />
-
+            android:text="@string/subscribe"
+            android:textColor="@color/DarkOliveGreen"
+            android:textSize="16sp" />
     </RelativeLayout>
 
     <TextView
         android:id="@+id/eventBriefView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/LightGrey"
-        android:textSize="16sp"
-        android:text="@string/eventBrief" />
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/eventBrief"
+        android:background="@color/White"
+        android:padding="20dp"
+        android:textSize="20sp" />
 
 </LinearLayout>

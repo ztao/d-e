@@ -22,6 +22,7 @@ public class DEJsonParser {
 			JSONObject event = eventList.getJSONObject(i);
 			String name  = event.getString("Name");
 			String brief = event.getString("Brief");
+			Log.d(dtag, "event name: "+name);
 			eventsData.add(new EventModel(name, brief));
 		}
 		return eventsData;
@@ -51,7 +52,7 @@ public class DEJsonParser {
 				am.startDate = a.getString("Start Date");
 				am.duration = a.getString("Duration");
 				am.place.name = p.getString("Name");
-				am.place.location = p.getString("Location");
+				am.place.location = p.getString("Location").toString();
 				am.place.weather = p.getString("Weather");
 				am.tips = a.getString("Tips");
 				am.relation.previous = r.getString("previous");
@@ -60,12 +61,12 @@ public class DEJsonParser {
 				eventModel.activityList.add(am);
 			}
 			int bLength = event.getJSONArray("Before You Go").length();
-			eventModel.beforeYouGo = new String[bLength];
-			List<String> byg = new ArrayList<String>();
+			ArrayList<String> byg = new ArrayList<String>();
 			for(int i=0; i<bLength; ++i) {
 				byg.add((String) event.getJSONArray("Before You Go").get(i));
-				eventModel.beforeYouGo = byg.toArray(new String[0]);
 			}
+			eventModel.beforeYouGo = byg;
+			Log.d(dtag, eventModel.beforeYouGo.toString());
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

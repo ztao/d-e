@@ -8,6 +8,7 @@ import com.appspot.diabeteselsewhere.R;
 import com.appspot.diabeteselsewhere.helper.DEJsonParser;
 import com.appspot.diabeteselsewhere.helper.DEServerHelper;
 import com.appspot.diabeteselsewhere.main_fragment.EventDetailFragment;
+import com.appspot.diabeteselsewhere.main_fragment.EventSubscriptionFragment;
 import com.appspot.diabeteselsewhere.model.EventModel;
 
 import android.app.Activity;
@@ -23,16 +24,26 @@ public class EventDetailWebAPITask extends AsyncTask<String, Integer, String> {
 	private static final String SUBSCRIBED_EVENT_NUMBER = "the number of subscribed event";
 	private static final String USER_DATA = "data of the user";
 	private static final String CURRENT_EVENT = "current event subscribed";
-	private EventDetailFragment fragment;
+	private EventDetailFragment edFragment;
+	private EventSubscriptionFragment esFragment;
 	private Activity context;
 	private Dialog progDialog;
 	private static final String dtag = "EventDetailWebAPITask";
 	
-	public EventDetailWebAPITask(EventDetailFragment f) {
-		fragment = f;
-		context = fragment.getActivity();
+	public EventDetailWebAPITask() {
+		
 	}
 	
+	public EventDetailWebAPITask(EventDetailFragment f) {
+		edFragment = f;
+		context = edFragment.getActivity();
+	}
+	
+	public EventDetailWebAPITask(EventSubscriptionFragment f) {
+		esFragment = f;
+		context = esFragment.getActivity();
+	}
+
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute(); 
@@ -59,13 +70,20 @@ public class EventDetailWebAPITask extends AsyncTask<String, Integer, String> {
 	protected void onPostExecute(String result) {
 
 		EventModel eventData = new EventModel();
-		
+		Log.d(dtag, "On post execute...");
+		Log.d(dtag, "result == null? "+(result == null));
 		progDialog.dismiss();
 		if (result == null || result.length() == 0) {
 			return;
 		}		
 		eventData = DEJsonParser.eventParser(result);
-		this.fragment.setActivities(eventData);
+		if (edFragment != null) {
+			Log.d(dtag, "Gonna set activities of the subscribed event");
+			edFragment.setActivities(eventData);
+		} else if (esFragment != null) {
+			Log.d(dtag, "Gonna set subscribed event");
+			esFragment.setSubscribedEvent(eventData);
+		}
 	}
 
 }

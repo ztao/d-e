@@ -63,10 +63,10 @@ public class CurrentActivityFragment extends Fragment
 				.inflate(R.layout.current_activity_detail, container, false);
 		EventModel.ActivityModel currentActivity = mEvent.activityList.get(mPageNumber);
 		((TextView) rootView.findViewById(R.id.currentActivityName)).setText(currentActivity.name);
-		((TextView) rootView.findViewById(R.id.startdate)).setText(currentActivity.startDate);
-		((TextView) rootView.findViewById(R.id.duration)).setText(currentActivity.duration);
-		((TextView) rootView.findViewById(R.id.place)).setText(currentActivity.place.name);
-		((TextView) rootView.findViewById(R.id.weather)).setText(currentActivity.place.weather);
+		((TextView) rootView.findViewById(R.id.startdate)).setText("Start Date: "+currentActivity.startDate);
+		((TextView) rootView.findViewById(R.id.duration)).setText("Duration: "+currentActivity.duration);
+		((TextView) rootView.findViewById(R.id.place)).setText("Place: "+currentActivity.place.name);
+		((TextView) rootView.findViewById(R.id.weather)).setText("Weather: "+currentActivity.place.weather);
 		editableTips = currentActivity.tips;
 		((TextView) rootView.findViewById(R.id.tips)).setText(editableTips);
 		Button shareTips = (Button) rootView.findViewById(R.id.shareTipsButton);
@@ -111,5 +111,5 @@ public class CurrentActivityFragment extends Fragment
 	public interface OnTipsUpdatedListener {
 		public void updateCurrentItem(String newTips, int activityId);
 	}
-
+	
 }

@@ -11,7 +11,7 @@ public class EventModel {
 	public String duration;
 	public ArrayList<ActivityModel> activityList;
 	public String generalTips; // A kind of article describing what a user need to do before departure
-	public String [] beforeYouGo; //CheckList
+	public ArrayList<String> beforeYouGo; //CheckList
 	
 	public EventModel() {
 		

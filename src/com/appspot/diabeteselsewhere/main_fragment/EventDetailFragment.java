@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.appspot.diabeteselsewhere.R;
 import com.appspot.diabeteselsewhere.activity.ActivitiesPagerActivity;
+import com.appspot.diabeteselsewhere.adapter.ActivityListAdapter;
 import com.appspot.diabeteselsewhere.asynctask.EventDetailWebAPITask;
 import com.appspot.diabeteselsewhere.model.EventModel;
 import com.appspot.diabeteselsewhere.model.EventModel.ActivityModel;
@@ -16,6 +17,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class EventDetailFragment extends ListFragment {
@@ -24,6 +27,7 @@ public class EventDetailFragment extends ListFragment {
 	private static final String SUBSCRIBED_EVENT_NUMBER = "the number of subscribed event";
 	private static final String EVENT_URL = "/event/";
 	private int eventId;
+	ArrayList<ActivityModel> activityList;
 	private String[] activityNames;
 	EventModel mEvent;
 	private static final String dtag = "EventDetailFragment";
@@ -42,15 +46,18 @@ public class EventDetailFragment extends ListFragment {
 
 	public void setActivities(EventModel eventData) {
 		mEvent = eventData;
-		ArrayList<ActivityModel> activities = mEvent.activityList;
-		int aSize = activities.size();
-		activityNames = new String[aSize];
-		for(int i = 0; i < aSize; i++) {
-			activityNames[i] = activities.get(i).name;
-			Log.d(dtag, "activity Name "+i+": "+activities.get(i).name);
-		}
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_list_item_1, activityNames);
+		activityList = mEvent.activityList;
+//		ArrayList<ActivityModel> activities = mEvent.activityList;
+//		int aSize = activities.size();
+//		activityNames = new String[aSize];
+//		for(int i = 0; i < aSize; i++) {
+//			activityNames[i] = activities.get(i).name;
+//			Log.d(dtag, "activity Name "+i+": "+activities.get(i).name);
+////		}
+//		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+//				android.R.layout.simple_list_item_1, activityNames);
+		ActivityListAdapter adapter = new ActivityListAdapter(
+				getActivity(),R.layout.each_activity_item, activityList);
 		setListAdapter(adapter);
 	}
 	
@@ -62,7 +69,7 @@ public class EventDetailFragment extends ListFragment {
 		b.putInt("Activity Position", position);
 		myIntent.putExtras(b);
 		startActivity(myIntent);
-		Toast.makeText(getActivity(), "No."+position+" "+activityNames[position], Toast.LENGTH_SHORT).show();
+		Toast.makeText(getActivity(), "No."+position+" "+activityList.get(position).name, Toast.LENGTH_SHORT).show();
 		parentActivity.overridePendingTransition(
 				R.anim.slide_in_right,R.anim.slide_out_left);
 		Log.d(dtag, "Item " + position + " is clicked.");

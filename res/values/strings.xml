@@ -3,7 +3,7 @@
     <string name="app_name">Diabetes ElseWhere</string>
 
     <string-array name="features_array">
-        <item>Your Health Information</item>
+        <item>Perosonal Health Information</item>
         <item>New Event</item>
         <item>My Schedule</item>
         <item>General Tips</item>
@@ -34,5 +34,6 @@
     <string name="weatherDefault">Weather: maybe good</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
+    <string name="no_general_tips">No general tips available</string>
 
 </resources>

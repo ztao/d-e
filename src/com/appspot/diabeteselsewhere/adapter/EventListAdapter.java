@@ -66,12 +66,13 @@ public class EventListAdapter extends ArrayAdapter<EventModel> {
 			holder.eventName = (TextView) convertView.findViewById(R.id.eventNameView);
 			holder.eventBrief = (TextView) convertView.findViewById(R.id.eventBriefView);
 			holder.subscribeText = (TextView) convertView.findViewById(R.id.subscribeText);
+			convertView.setTag(holder);
 		} else {
 			holder = (EventListViewHolder) convertView.getTag();
 		}
-		//		Log.d(dtag, eventDataList.get(pos).name);
 		holder.eventName.setText(eventDataList.get(pos).name);
 		holder.eventBrief.setText(eventDataList.get(pos).brief);
+		Log.d(dtag, "pos: "+pos);
 		if (defaultPosition == pos) {
 			((ListView) parent).setItemChecked(pos, false);
 		}

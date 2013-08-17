@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/LightYellow" >
+
+    <Button
+        android:id="@+id/pharmacy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nearest Pharmacy"
+                android:layout_marginTop="100dp"
+    
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/PaleGreen" />
+
+    <Button
+        android:id="@+id/hospital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nearest Hospital"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:background="@color/PaleGreen" />
+
+</LinearLayout>
